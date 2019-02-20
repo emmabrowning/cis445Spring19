@@ -11,79 +11,75 @@ app.get('/', function(request, response){
 });
 
 // get all players
-app.get('/players', function(request, response){
-    //create variable to handle all players
-    const player = request.params.players;
-    response.write("<html><body><p>You got ALL players");
-    response.write("</p></body></html>");
+app.get('/player', function(request, response){
+    const player = request.params.player;
+    response.write("<html><body><p>Display all players " + request.url + "</p></body></html>");
     response.end();
 });
 
 
 // get a single player
-app.get('/player', function(request, response){
-    //create variable to handle one player
+app.get('/player/:player', function(request, response){
     const player = request.params.player;
-    response.write("<html><body><p>You got ONE player");
-    response.write("</p></body></html>");
+    response.write("<html><body><p>You got " + player + "</p></body></html>");
     response.end();
 });
 
 
 // update a player
-app.patch('/player', function(request, response){
+app.put('/player/:player', function(request, response){
    const player = request.params.player;
-       response.write("<html><body><p>This player has been UPDATED.");
-   response.write("</p></body></html>");
+   response.write("<html><body><p>This updates " + player + "</p></body></html>");
    response.end();
 });
 
 
 // delete a player
-app.delete('/player', function(request, response){
+app.delete('/player/:player', function(request, response){
     const player = request.params.player;
-    response.write("<html><body><p>Player DELETED");
+    response.write("<html><body><p>" + player + " has been deleted");
     response.write("</p></body></html>");
     response.end();
-})
+});
 
 // add a player
-app.post('/player', function(request, response){
-    const player = request.params.players;
-    response.write("<html><body><p>New player ADDED");
+app.post('/player/:player', function(request, response){
+    const player = request.params.player;
+    response.write("<html><body><p>" + player + " has been added");
     response.write("</p></body></html>");
     response.end();
-})
+});
 
 
 // get items
-app.get('/items', function(request, response){
-    const items = request.params.items;
-    response.write("<html><body><p>You got ALL items");
+app.get('/item', function(request, response){
+    const item = request.params.item;
+    response.write("<html><body><p>Get all items");
     response.write("</p></body></html>");
     response.end();
 });
 
 
 // get item
-app.get('/item', function(request, response){
+app.get('/item/:item', function(request, response){
     const item = request.params.item;
-    response.write("<html><body><p>You got ONE item");
+    response.write("<html><body><p>You got " + item);
     response.write("</p></body></html>");
     response.end();
 });
 
 
 // add item
-app.post('/:item', function(request, response) {
+app.post('/item/:item', function(request, response) {
     const item = request.params.item;
-    response.write("<html><body><p>Item ADDED");
+    response.write("<html><body><p>" + item + " has been added");
     response.write("</p></body></html>");
+    response.end();
 });
 
 
 // delete item
-app.delete('/:item', function(request, response){
+app.delete('/item/:item', function(request, response){
     const item = request.params.item;
     response.write("<html><body><p>Item has been DELETED.");
     response.write("</p></body></html>");
@@ -92,43 +88,43 @@ app.delete('/:item', function(request, response){
 
 
 // update item
-app.patch('/:item', function(request, response){
+app.put('/item/:item', function(request, response){
    const item = request.params.item;
-   response.write("<html><body><p>This item has been UPDATED.");
+   response.write("<html><body><p>" + item + " has been updated");
    response.write("</p></body></html>");
    response.end();
 });
 
 
-// get highscore
-app.get('/highscore', function(request, response){
-    const score = request.params.score;
-    response.write("<html><body><p>This is the high score.");
+// get skills
+app.get('/skills', function(request, response){
+    const skills = request.params.skills;
+    response.write("<html><body><p>Displays all skills.");
     response.write("</p></body></html");
     response.end();
 });
 
-// update highscore
-app.patch('/:highscore', function(request, response){
-    const score = request.params.score;
-    response.write("<html><body><p>This is the UPDATED high score.");
+// update skills
+app.put('/skills/:skills', function(request, response){
+    const skills = request.params.skills;
+    response.write("<html><body><p> This skill has been updated: " + skills);
     response.write("</p></body></html");
     response.end();
 });
 
 
-// delete highscore
-app.delete('/:highscore', function(request, response){
-    const score = request.params.score;
-    response.write("<html><body><p>The high score has been DELETED.");
+// delete skills
+app.delete('/skills/:skills', function(request, response){
+    const skills = request.params.skills;
+    response.write("<html><body><p>The skill: " + skills + " has been DELETED.");
     response.write("</p></body></html");
     response.end();
 });
 
-// add highscore
-app.post('/:highscore', function(request, response){
-    const score = request.params.score;
-    response.write("<html><body><p>New score ADDED");
+// add skills
+app.post('/skills/:skills', function(request, response){
+    const skills = request.params.skills;
+    response.write("<html><body><p>" + skills + " has been added");
     response.write("</p></body></html");
     response.end();
 });
